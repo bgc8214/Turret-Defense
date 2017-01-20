@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class ObjectPooling : MonoBehaviour {
 
-    public static ObjectPooling Pooling;
+    public static ObjectPooling Instance;
     public GameObject TargetObject;
     public int PoolingNumber;
     List<GameObject> PoolList;
-    void awake()
+    void Awake()
     {
-        Pooling = this;
         PoolList = new List<GameObject>();
+        Instance = this;
     }
 
 	void Start () {
-		for(int i = 0; i < PoolingNumber; i++)
+      
+        for (int i = 0; i < PoolingNumber; i++)
         {
             GameObject gameObject = GameObject.Instantiate(TargetObject);
+            if (gameObject == null) Debug.Log("null");
             gameObject.SetActive(false);
             PoolList.Add(gameObject);
         }
@@ -29,7 +31,7 @@ public class ObjectPooling : MonoBehaviour {
         {
             if (!PoolList[i].activeInHierarchy)
             {
-                PoolList[i].SetActive(true);
+                Debug.Log("find");
                 return PoolList[i];
             }
         }

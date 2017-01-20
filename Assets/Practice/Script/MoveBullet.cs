@@ -6,13 +6,19 @@ public class MoveBullet : MonoBehaviour {
     public float velocity = 5f;
     private float lifeTime = 3f;
 	void Start () {
-        StartCoroutine(delayDestory(lifeTime));
+        
 	}
 
     IEnumerator delayDestory(float delay)
     {
         yield return new WaitForSeconds(delay);
-        GameObject.Destroy(this.gameObject);
+        Debug.Log("set false");
+        this.gameObject.SetActive(false);
+    }
+
+    void OnEnable()
+    {
+        StartCoroutine(delayDestory(lifeTime));
     }
 	
 	void Update () {
