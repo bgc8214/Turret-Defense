@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Turret Defense", "Turret Defense.csproj", "{6EC53665-687D-2819-860F-D0EB70D1D121}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Turret Defense.Editor", "Turret Defense.Editor.csproj", "{65CC7424-00CB-B5D4-9BA2-A9AB8C14A6E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EC53665-687D-2819-860F-D0EB70D1D121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EC53665-687D-2819-860F-D0EB70D1D121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EC53665-687D-2819-860F-D0EB70D1D121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EC53665-687D-2819-860F-D0EB70D1D121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65CC7424-00CB-B5D4-9BA2-A9AB8C14A6E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65CC7424-00CB-B5D4-9BA2-A9AB8C14A6E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65CC7424-00CB-B5D4-9BA2-A9AB8C14A6E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65CC7424-00CB-B5D4-9BA2-A9AB8C14A6E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
