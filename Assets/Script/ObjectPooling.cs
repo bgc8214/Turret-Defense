@@ -15,7 +15,6 @@ public class ObjectPooling : MonoBehaviour {
     }
 
 	void Start () {
-      
         for (int i = 0; i < PoolingNumber; i++)
         {
             GameObject gameObject = GameObject.Instantiate(TargetObject);
@@ -24,7 +23,10 @@ public class ObjectPooling : MonoBehaviour {
             PoolList.Add(gameObject);
         }
 	}
-
+    public int number()
+    {
+        return PoolingNumber;
+    }
     public GameObject popObject()
     {
         for(int i = 0; i < PoolList.Count; i++)

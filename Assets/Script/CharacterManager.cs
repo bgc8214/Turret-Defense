@@ -49,11 +49,14 @@ public class CharacterManager : MonoBehaviour
         for (;;)
         {
             yield return new WaitForSeconds(2.0f);
-            var enemy = GameObject.Instantiate(Character);
+            var polling= GetComponent<ObjectPooling>(); // 질문사항 ! static 선언시 여러개 할경우 구분
+            var enemy = polling.popObject();
+            if (enemy == null) continue;
             enemy.transform.position = followers[0].transform.position; // 0번 위치에서 시작하기 위함
             var script = enemy.AddComponent<CharacterMovement>();  // 스크립트도 직접 붙이지 말고 만들어서 넣자
             enemies.Add(enemy); // 리스트에 추가
             script.Init(followers); // 스크립트의 함수를 부르겠다.
+            enemy.SetActive(true);
         }
     }
 

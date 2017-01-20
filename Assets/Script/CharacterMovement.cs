@@ -36,7 +36,9 @@ public class CharacterMovement : MonoBehaviour {
             if(followerIndex == followers.Length) // 마지막에 오면 지우겠다
             {
                 CharacterManager.Instance.removeEnemy(this.gameObject); //리스트에서 빼기 위함
-                GameObject.Destroy(this.gameObject);
+                followerIndex = 1;
+                velocity = 0f; // 속도가 중첩되는 이유는 ???
+                gameObject.SetActive(false);
             }   
         }
 
