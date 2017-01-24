@@ -9,7 +9,7 @@ public class MoveTurret : MonoBehaviour {
     public GameObject bullet;
     Coroutine cor;
     void Start () {
-        //cor = StartCoroutine(shootBullet());
+        cor = StartCoroutine(shootBullet());
     }
     int tick = 0;
     IEnumerator shootBullet()
@@ -18,8 +18,12 @@ public class MoveTurret : MonoBehaviour {
         {
             // flag 로 타겟을 찾는 것도 좋음
             yield return new WaitForSeconds(0.5f);
-            GameObject newBullet =  ObjectPooling.Instance.popObject();
-            if (newBullet == null) continue;
+            //   GameObject newBullet = GameObject.Instantiate(bullet); 만들떄
+            GameObject newBullet = ObjectPooling.Instance.popObject(1);
+            if (newBullet == null)
+            {
+                continue;
+            }
             newBullet.transform.position = Shooter.position;
             newBullet.transform.rotation = Shooter.rotation;
             newBullet.SetActive(true);

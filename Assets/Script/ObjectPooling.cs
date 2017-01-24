@@ -2,38 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPooling : MonoBehaviour {
+public class ObjectPooling : MonoBehaviour
+{
 
     public static ObjectPooling Instance;
-    public GameObject TargetObject;
-    public int PoolingNumber;
-    List<GameObject> PoolList;
+    public List<GameObject> TargetObjects;
+    public List<int> PoolingNumbers;
+    public List<GameObject> PoolList;
     void Awake()
     {
         PoolList = new List<GameObject>();
         Instance = this;
     }
 
-	void Start () {
-        for (int i = 0; i < PoolingNumber; i++)
+    void Start()
+    {
+        for (int j = 0; j < TargetObjects.Count; j++)
         {
-            GameObject gameObject = GameObject.Instantiate(TargetObject);
-            if (gameObject == null) Debug.Log("null");
-            gameObject.SetActive(false);
-            PoolList.Add(gameObject);
+            for (int i = 0; i < PoolingNumbers[j]; i++)
+            {
+                GameObject gameObject = GameObject.Instantiate(TargetObjects[j]);
+                if (gameObject == null) Debug.Log("null");
+                gameObject.SetActive(false);
+                PoolList.Add(gameObject);
+            }
         }
-	}
-    public int number()
-    {
-        return PoolingNumber;
     }
-    public GameObject popObject()
+    public GameObject popObject(int number)
     {
-        for(int i = 0; i < PoolList.Count; i++)
+        int start = 0;
+        for (int k = 0; k < number; k++)
+        {
+            start += PoolingNumbers[k];
+        }
+        for (int i = start; i < start+PoolingNumbers[number]; i++)
         {
             if (!PoolList[i].activeInHierarchy)
             {
-                Debug.Log("find");
                 return PoolList[i];
             }
         }

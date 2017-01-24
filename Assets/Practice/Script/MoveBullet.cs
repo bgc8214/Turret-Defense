@@ -6,13 +6,12 @@ public class MoveBullet : MonoBehaviour {
     public float velocity = 5f;
     private float lifeTime = 3f;
 	void Start () {
-        
-	}
+
+    }
 
     IEnumerator delayDestory(float delay)
     {
         yield return new WaitForSeconds(delay);
-        Debug.Log("set false");
         this.gameObject.SetActive(false);
     }
 

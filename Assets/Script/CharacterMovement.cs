@@ -26,6 +26,7 @@ public class CharacterMovement : MonoBehaviour {
     void Update () {
         // this.rigidbody.AddForce(this.transform.forward * 200
         //     , ForceMode.VelocityChange);
+        Debug.Log("next move " + followerIndex);
         var targetPosition = followers[followerIndex].transform.position; // 이동할 곳의 포지션
 
         this.transform.forward = (targetPosition - this.transform.position).normalized; // 이동할 곳을 보는 벡터로 forward 지정
@@ -36,12 +37,11 @@ public class CharacterMovement : MonoBehaviour {
             if(followerIndex == followers.Length) // 마지막에 오면 지우겠다
             {
                 CharacterManager.Instance.removeEnemy(this.gameObject); //리스트에서 빼기 위함
+                Destroy(this.gameObject.GetComponent<CharacterMovement>());
+                this.gameObject.SetActive(false);
                 followerIndex = 1;
-                velocity = 0f; // 속도가 중첩되는 이유는 ???
-                gameObject.SetActive(false);
             }   
         }
-
         this.transform.position = this.transform.position + transform.forward * velocity * Time.deltaTime;
     }
 }
