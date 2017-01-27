@@ -217,6 +217,7 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
     <Compile Include="Assets\Practice\Script\MoveBullet.cs" />
     <Compile Include="Assets\Practice\Script\MoveTurret.cs" />
+    <Compile Include="Assets\Script\BaseManager.cs" />
     <Compile Include="Assets\Script\BulletMovement.cs" />
     <Compile Include="Assets\Script\CharacterManager.cs" />
     <Compile Include="Assets\Script\CharacterMovement.cs" />
