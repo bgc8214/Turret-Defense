@@ -21,12 +21,12 @@ public class CharacterMovement : MonoBehaviour {
     public void Init(GameObject[] followers) 
     {
         this.followers = followers;
+        Debug.Log("follower");
     }
 
     void Update () {
         // this.rigidbody.AddForce(this.transform.forward * 200
         //     , ForceMode.VelocityChange);
-        Debug.Log("next move " + followerIndex);
         var targetPosition = followers[followerIndex].transform.position; // 이동할 곳의 포지션
 
         this.transform.forward = (targetPosition - this.transform.position).normalized; // 이동할 곳을 보는 벡터로 forward 지정

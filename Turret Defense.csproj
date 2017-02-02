@@ -221,7 +221,9 @@
     <Compile Include="Assets\Script\BulletMovement.cs" />
     <Compile Include="Assets\Script\CharacterManager.cs" />
     <Compile Include="Assets\Script\CharacterMovement.cs" />
+    <Compile Include="Assets\Script\JsonHelper.cs" />
     <Compile Include="Assets\Script\ObjectPooling.cs" />
+    <Compile Include="Assets\Script\ResourceManager.cs" />
     <Compile Include="Assets\Script\TurretMovement.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -52,10 +52,8 @@ public class CharacterManager : MonoBehaviour
         for (;;)
         {
             yield return new WaitForSeconds(2.0f);
-            var enemy = ObjectPooling.Instance.GenerateObject(ObjectPooling.ObjectType.Zombie, followers[0].transform.position, Quaternion.identity);
+            var enemy = ObjectPooling.Instance.GenerateObject(ObjectPooling.Type.Zombie, followers[0].transform.position, Quaternion.identity);
             if (enemy == null) continue;
-           
-
             var script = enemy.GetComponent<CharacterMovement>() ?? enemy.AddComponent<CharacterMovement>();
             //스크립트도 직접 붙이지 말고 만들어서 넣자
             enemies.Add(enemy); // 리스트에 추가

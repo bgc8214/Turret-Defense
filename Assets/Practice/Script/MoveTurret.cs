@@ -19,7 +19,7 @@ public class MoveTurret : MonoBehaviour {
             // flag 로 타겟을 찾는 것도 좋음
             yield return new WaitForSeconds(0.5f);
             //   GameObject newBullet = GameObject.Instantiate(bullet); 만들떄
-            GameObject newBullet = ObjectPooling.Instance.GenerateObject(ObjectPooling.ObjectType.Bullet, Shooter.position, Shooter.rotation);
+            GameObject newBullet = ObjectPooling.Instance.GenerateObject(ObjectPooling.Type.Bullet, Shooter.position, Shooter.rotation);
             if (newBullet == null)
             {
                 continue;

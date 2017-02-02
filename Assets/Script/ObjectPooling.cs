@@ -1,58 +1,67 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.IO;
 
 public class ObjectPooling : BaseManager<ObjectPooling>
 {
-    public enum ObjectType
+    public enum Type
     {
-        Zombie, Turret, Bullet
+        Zombie, Bullet, Turret
     }
 
-    [System.Serializable] // 사용자가 만든 클래스는 직렬화를 해주어야 보인다.
-    public class ObjectSetting
+    [System.Serializable]
+    public class VO
     {
-        public ObjectType Type; // enum
+        public Type type;
+        public int poolingNumber;
         public string path;
-        public int PoolingNumber;
     }
-    Dictionary<ObjectType, GameObject[]> ObjectPooler;
-    Dictionary<ObjectType, int> ObjectIndex;
-    public ObjectSetting[] Setting;
+
+    Dictionary<Type, GameObject[]> ObjectPoller;
+    Dictionary<Type, int> ObjectIndexer;
+    VO[] Setting;
+
     public override void OnAwake()
     {
-        Debug.Log("Called");
-        ObjectPooler = new Dictionary<ObjectType, GameObject[]>();
-        ObjectIndex = new Dictionary<ObjectType, int>();
+
+    }
+
+    void Start()
+    {
+        ObjectPoller = new Dictionary<Type, GameObject[]>();
+        ObjectIndexer = new Dictionary<Type, int>();
+        //String json = JsonHelper.ToJson(Setting);
+        //File.WriteAllText(Application.dataPath + "/Resources/Setting.json", json);
+        Setting = JsonHelper.FromJson<VO>(ResourceManager.Instance.GetSetting());
         foreach (var set in Setting)
         {
-            ObjectPooler.Add(set.Type, new GameObject[set.PoolingNumber]);
-            ObjectIndex.Add(set.Type, 0);
-            // 원본의 리소스를 가져온다;
-            var temp = Resources.Load<GameObject>(set.path);
-            for (int i = 0; i < set.PoolingNumber; i++)
+            var tmp = ResourceManager.Instance.GetResource(set.path);
+
+            ObjectPoller.Add(set.type, new GameObject[set.poolingNumber]);
+            ObjectIndexer.Add(set.type, 0);
+            for (int i = 0; i < set.poolingNumber; i++)
             {
-                ObjectPooler[set.Type][i] = GameObject.Instantiate(temp);
-                ObjectPooler[set.Type][i].SetActive(false);
+                ObjectPoller[set.type][i] = GameObject.Instantiate(tmp);
+                ObjectPoller[set.type][i].SetActive(false);
             }
         }
     }
-    void Start()
+
+    public GameObject GenerateObject(Type type, Vector3 position, Quaternion rotation, Transform parent = null)
     {
-        //GenerateObject(ObjectType.Zombie, Vector3.zero, Quaternion.identity);
-    }
-    public GameObject GenerateObject(ObjectType type, Vector3 position, Quaternion rotation, Transform parent = null)
-    {
-        Debug.Log("genenen");
-        ObjectIndex[type]++;
-        if (ObjectIndex[type] == ObjectPooler[type].Length)
-            ObjectIndex[type] = 0;
-        GameObject obj = ObjectPooler[type][ObjectIndex[type]];
-        obj.transform.position = position;
-        obj.transform.rotation = rotation;
-        obj.transform.parent = parent;
-        obj.SetActive(true);
-        return ObjectPooler[type][ObjectIndex[type]];
+        GameObject gameObject = ObjectPoller[type][ObjectIndexer[type]++];
+
+        gameObject.transform.position = position;
+        gameObject.transform.rotation = rotation;
+        gameObject.transform.parent = parent;
+        gameObject.SetActive(true);
+        if (ObjectIndexer[type] == ObjectPoller[type].Length)
+        {
+            ObjectIndexer[type] = 0;
+        }
+
+        return gameObject;
     }
 }
