@@ -37,7 +37,7 @@ public class ObjectPooling : BaseManager<ObjectPooling>
         Setting = JsonHelper.FromJson<VO>(ResourceManager.Instance.GetSetting());
         foreach (var set in Setting)
         {
-            var tmp = ResourceManager.Instance.GetResource(set.path);
+            var tmp = (GameObject)ResourceManager.Instance.GetResource(set.path);
 
             ObjectPoller.Add(set.type, new GameObject[set.poolingNumber]);
             ObjectIndexer.Add(set.type, 0);
@@ -47,6 +47,7 @@ public class ObjectPooling : BaseManager<ObjectPooling>
                 ObjectPoller[set.type][i].SetActive(false);
             }
         }
+        
     }
 
     public GameObject GenerateObject(Type type, Vector3 position, Quaternion rotation, Transform parent = null)

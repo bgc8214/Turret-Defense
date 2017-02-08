@@ -19,8 +19,6 @@ public class CharacterManager : MonoBehaviour
     {
         StartCoroutine(CreateCharacter());
         //var enemy = ObjectPooling.Instance.GenerateObject(ObjectPooling.ObjectType.Zombie, followers[0].transform.position, Quaternion.identity);
-
-
     }
 
     public void removeEnemy(GameObject gameObject)
