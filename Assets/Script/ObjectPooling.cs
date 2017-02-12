@@ -7,8 +7,8 @@ using System.IO;
 public class ObjectPooling : BaseManager<ObjectPooling>
 {
     public enum Type
-    {
-        Zombie, Bullet, Turret
+    {   
+        Zombie, Bullet, Missile, BulletTurret, MissileTurret
     }
 
     [System.Serializable]
@@ -38,7 +38,7 @@ public class ObjectPooling : BaseManager<ObjectPooling>
         foreach (var set in Setting)
         {
             var tmp = (GameObject)ResourceManager.Instance.GetResource(set.path);
-
+            Debug.Log(set.path);
             ObjectPoller.Add(set.type, new GameObject[set.poolingNumber]);
             ObjectIndexer.Add(set.type, 0);
             for (int i = 0; i < set.poolingNumber; i++)
@@ -65,4 +65,15 @@ public class ObjectPooling : BaseManager<ObjectPooling>
 
         return gameObject;
     }
+
+    public enum Unit {
+            TOWER1, TOWER2, TOWER3
+       }
+
+
+    public void OnClickButton(Unit a)
+    {
+        Debug.Log("Clickk" + a);
+    }
+
 }

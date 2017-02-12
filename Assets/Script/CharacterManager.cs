@@ -1,17 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterManager : MonoBehaviour
+public class CharacterManager : BaseManager<CharacterManager>
 {
     public ArrayList enemies; // 적 리스트로 터렛에게 타겟 넘기기 위함
     public GameObject Character;
-    public static CharacterManager Instance; // 싱글톤으로 쓰고 싶으나 private 생성자가 안되니 그냥 static으로
+    //public static CharacterManager Instance; // 싱글톤으로 쓰고 싶으나 private 생성자가 안되니 그냥 static으로
     public GameObject[] followers; // 길의 위치를 매니저만 가지고 있고, 이것을 만들때마다 적에게 부여하는 방식이 좋다
 
-    void Awake() // processing 의 setting과 같음. 값을 초기화 할 때 사용
+    public override void OnAwake()
     {
-        Instance = this;
         enemies = new ArrayList();
     }
 
@@ -63,4 +63,6 @@ public class CharacterManager : MonoBehaviour
     {
 
     }
+
+    
 }

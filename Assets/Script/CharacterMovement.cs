@@ -21,7 +21,6 @@ public class CharacterMovement : MonoBehaviour {
     public void Init(GameObject[] followers) 
     {
         this.followers = followers;
-        Debug.Log("follower");
     }
 
     void Update () {

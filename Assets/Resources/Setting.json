@@ -1,1 +1,5 @@
-{"Items":[{"type":0,"poolingNumber":10,"path":"BlueZombie"},{"type":1,"poolingNumber":20,"path":"Bullet"}]}
+{"Items":[{"type":0,"poolingNumber":10,"path":"BlueZombie"},
+{"type":1,"poolingNumber":10,"path":"Bullet"},
+{"type":2,"poolingNumber":10,"path":"CurveMissile"},
+{"type":3,"poolingNumber":1,"path":"BulletTurret"},
+{"type":4,"poolingNumber":1,"path":"MissileTurret"}]}

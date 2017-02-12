@@ -6,7 +6,8 @@ public class MoveTurret : MonoBehaviour {
     public Transform Head;
     public Transform Shooter;
     public Transform Enemy;
-    public GameObject bullet;
+    public float ShootingDelay;
+    public ObjectPooling.Type MissileType;
     Coroutine cor;
     void Start () {
         cor = StartCoroutine(shootBullet());
@@ -17,9 +18,9 @@ public class MoveTurret : MonoBehaviour {
         for(;;)
         {
             // flag 로 타겟을 찾는 것도 좋음
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(ShootingDelay);
             //   GameObject newBullet = GameObject.Instantiate(bullet); 만들떄
-            GameObject newBullet = ObjectPooling.Instance.GenerateObject(ObjectPooling.Type.Bullet, Shooter.position, Shooter.rotation);
+            GameObject newBullet = ObjectPooling.Instance.GenerateObject(MissileType, Shooter.position, Shooter.rotation);
             if (newBullet == null)
             {
                 continue;
