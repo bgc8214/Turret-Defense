@@ -2,22 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveBullet : MonoBehaviour {
+public abstract class ObjectMovement : MonoBehaviour {
 
     public GameObject Muzzle;
     public GameObject Bullet;
     public GameObject Explosion;
-    public ObjectPooling.Type MissileType;
 
     public float velocity = 5f;
     private float lifeTime = 3f;
     public float magnitute = 0.5f;
     public float frequency = 20.0f;
-    Vector3 pos;
-
-	void Start () {
-       
-    }
+    protected Vector3 pos;
 
     IEnumerator InActiveObjectDelay(float delay, GameObject obj)
     {
@@ -46,16 +41,10 @@ public class MoveBullet : MonoBehaviour {
         StartCoroutine(InActiveObjectDelay(2, Bullet));
         StartCoroutine(InActiveSelf(lifeTime));
     }
+
+    public abstract void OnUpdateMovement();
 	
 	void Update () {
-        if (MissileType == ObjectPooling.Type.Missile)
-        {
-            pos += transform.forward * Time.deltaTime * velocity;
-            Bullet.transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * magnitute;
-        }
-        else if (MissileType == ObjectPooling.Type.Bullet)
-        {
-            Bullet.transform.position = Bullet.transform.position + Bullet.transform.forward * velocity * Time.deltaTime;
-        }
+        OnUpdateMovement();
 	}
 }

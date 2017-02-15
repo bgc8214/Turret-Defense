@@ -49,7 +49,7 @@ public class CharacterManager : BaseManager<CharacterManager>
     {
         for (;;)
         {
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(3.0f);
             var enemy = ObjectPooling.Instance.GenerateObject(ObjectPooling.Type.Zombie, followers[0].transform.position, Quaternion.identity);
             if (enemy == null) continue;
             var script = enemy.GetComponent<CharacterMovement>() ?? enemy.AddComponent<CharacterMovement>();

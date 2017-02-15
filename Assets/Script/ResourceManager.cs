@@ -6,15 +6,16 @@ using UnityEngine;
 public class ResourceManager : BaseManager<ResourceManager> {
 
     Dictionary<String, UnityEngine.Object> Resources;
-    public List<String> Paths;
-    String Setting;
+    String JSONSetting;
+    ObjectPooling.VO[] Setting;
     public override void OnAwake()
     {
         Resources = new Dictionary<string, UnityEngine.Object>();
-        Setting = UnityEngine.Resources.Load("setting").ToString();
-        foreach (var path in Paths)
+        JSONSetting = UnityEngine.Resources.Load("setting").ToString();
+        Setting = JsonHelper.FromJson<ObjectPooling.VO>(JSONSetting);
+        foreach (var set in Setting)
         {
-            Resources[path] = UnityEngine.Resources.Load(path);
+            Resources[set.path] = UnityEngine.Resources.Load(set.path);
         }
     }
 
@@ -25,7 +26,7 @@ public class ResourceManager : BaseManager<ResourceManager> {
 
     public String GetSetting()
     {
-        return Setting;
+        return JSONSetting;
     }
 
     public void UnloadResource(String path)

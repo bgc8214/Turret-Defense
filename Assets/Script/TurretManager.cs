@@ -5,29 +5,25 @@ using UnityEngine;
 
 public class TurretManager : BaseManager<TurretManager>
 {
+    public UIPanel panel;
+    public GameObject[] tiles;
+    int index = 0;
     public override void OnAwake()
     {
 
     }
 
-    void GenerateTurret(ObjectPooling.Type type, Vector3 position, Quaternion lotation)
+
+    public void OnClickButton()
+    {
+        //panel.alpha = 0f;
+        ObjectPooling.Instance.GenerateObject(ObjectPooling.Type.BulletTurret, tiles[index].transform.position, Quaternion.identity);
+        index++;
+    }
+
+    public void GenerateTurret(ObjectPooling.Type type, Vector3 position, Quaternion lotation)
     {
         ObjectPooling.Instance.GenerateObject(type, position, lotation);
     }
 
-    void Start()
-    {
-        StartCoroutine(Generate());
-    }
-
-    IEnumerator Generate()
-    {
-        yield return new WaitForSeconds(2.0f);
-        GenerateTurret(ObjectPooling.Type.BulletTurret, Vector3.zero, Quaternion.identity);
-    }
-
-    void Update()
-    {
-
-    }
 }

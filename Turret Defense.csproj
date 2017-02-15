@@ -216,14 +216,18 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
     <Compile Include="Assets\Script\BaseManager.cs" />
+    <Compile Include="Assets\Script\BulletMovement.cs" />
     <Compile Include="Assets\Script\CharacterManager.cs" />
     <Compile Include="Assets\Script\CharacterMovement.cs" />
     <Compile Include="Assets\Script\DeliverUnit.cs" />
     <Compile Include="Assets\Script\JsonHelper.cs" />
-    <Compile Include="Assets\Script\MoveBullet.cs" />
+    <Compile Include="Assets\Script\LaserMovement.cs" />
+    <Compile Include="Assets\Script\MissleMovement.cs" />
     <Compile Include="Assets\Script\MoveTurret.cs" />
+    <Compile Include="Assets\Script\ObjectMovement.cs" />
     <Compile Include="Assets\Script\ObjectPooling.cs" />
     <Compile Include="Assets\Script\ResourceManager.cs" />
+    <Compile Include="Assets\Script\TileMap.cs" />
     <Compile Include="Assets\Script\TurretManager.cs" />
   </ItemGroup>
   <ItemGroup>

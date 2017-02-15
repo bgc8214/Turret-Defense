@@ -8,7 +8,7 @@ public class ObjectPooling : BaseManager<ObjectPooling>
 {
     public enum Type
     {   
-        Zombie, Bullet, Missile, BulletTurret, MissileTurret
+        Zombie, Bullet, Missile, BulletTurret, MissileTurret, Laser
     }
 
     [System.Serializable]
@@ -71,7 +71,7 @@ public class ObjectPooling : BaseManager<ObjectPooling>
        }
 
 
-    public void OnClickButton(Unit a)
+    public void OnClickButton(Unit a)   
     {
         Debug.Log("Clickk" + a);
     }

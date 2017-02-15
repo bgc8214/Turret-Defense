@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour {
     Rigidbody rigidbody;
-    GameObject[] followers;
-    float velocity = 3.0f;
+    public GameObject[] followers;
+    public float velocity = 3.0f;
     int followerIndex = 1;
 
     void Awake()
