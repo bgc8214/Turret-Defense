@@ -219,8 +219,9 @@
     <Compile Include="Assets\Script\BulletMovement.cs" />
     <Compile Include="Assets\Script\CharacterManager.cs" />
     <Compile Include="Assets\Script\CharacterMovement.cs" />
-    <Compile Include="Assets\Script\DeliverUnit.cs" />
+    <Compile Include="Assets\Script\DeliverType.cs" />
     <Compile Include="Assets\Script\JsonHelper.cs" />
+    <Compile Include="Assets\Script\KeyBoardInput.cs" />
     <Compile Include="Assets\Script\LaserMovement.cs" />
     <Compile Include="Assets\Script\MissleMovement.cs" />
     <Compile Include="Assets\Script\MoveTurret.cs" />

@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class TurretManager : BaseManager<TurretManager>
 {
-    public UIPanel panel;
+    public UIPanel TurretPanel;
+    public UIPanel KeyBoardPanel;
     public GameObject[] tiles;
     int index = 0;
     public override void OnAwake()
@@ -13,12 +14,18 @@ public class TurretManager : BaseManager<TurretManager>
 
     }
 
-
-    public void OnClickButton()
+    public void OnClickButton(ObjectPooling.Type type)
     {
-        //panel.alpha = 0f;
-        ObjectPooling.Instance.GenerateObject(ObjectPooling.Type.BulletTurret, tiles[index].transform.position, Quaternion.identity);
-        index++;
+        KeyBoardInput.type = type;
+        KeyBoardInput.tiles = tiles;
+        TurretPanel.alpha = 0;
+        KeyBoardPanel.alpha = 1;
+    }
+    
+    public void GenerateTurretByIndex(int index, ObjectPooling.Type type)
+    {
+        ObjectPooling.Instance.GenerateObject(type, tiles[index].transform.position, Quaternion.identity);
+        
     }
 
     public void GenerateTurret(ObjectPooling.Type type, Vector3 position, Quaternion lotation)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeliverUnit : MonoBehaviour {
-    public ObjectPooling.Unit unit;
+public class DeliverType : MonoBehaviour
+{
+    public ObjectPooling.Type type;
 }
