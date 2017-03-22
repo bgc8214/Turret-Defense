@@ -21,6 +21,7 @@ public class MoveTurret : MonoBehaviour {
             yield return new WaitForSeconds(ShootingDelay);
             //   GameObject newBullet = GameObject.Instantiate(bullet); 만들떄
             GameObject newBullet = ObjectPooling.Instance.GenerateObject(MissileType, Shooter.position, Shooter.rotation);
+            newBullet.GetComponent<ObjectMovement>().Enemy = Enemy;
             if (newBullet == null)
             {
                 continue;

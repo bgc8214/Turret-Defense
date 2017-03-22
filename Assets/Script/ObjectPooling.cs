@@ -8,7 +8,7 @@ public class ObjectPooling : BaseManager<ObjectPooling>
 {
     public enum Type
     {   
-        Zombie, Bullet, Missile, BulletTurret, MissileTurret, Laser
+        Zombie, Bullet, Missile, BulletTurret, MissileTurret, Laser, LaserTower
     }
 
     [System.Serializable]

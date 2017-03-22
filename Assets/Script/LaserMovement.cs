@@ -7,12 +7,16 @@ public class LaserMovement : ObjectMovement
 {
     public override void OnUpdateMovement()
     {
-        Bullet.transform.position = Bullet.transform.position + Bullet.transform.forward * velocity * Time.deltaTime;
+        line.numPositions = 2;
+        line.SetPosition(0, transform.position);
+        line.SetPosition(1, Enemy.position);
+        
     }
 
+    private LineRenderer line;
     // Use this for initialization
     void Start () {
-		
+         line =GetComponent<LineRenderer>();
 	}
 	
 }

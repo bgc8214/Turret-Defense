@@ -4,53 +4,62 @@ using UnityEngine;
 
 public class KeyBoardInput : MonoBehaviour {
 
-    static int a = 0;
+    public static int TileIndex = 0;
     public static ObjectPooling.Type type;
     public static GameObject[] tiles;
     bool[] hasTurret = new bool[16];
 
     public void OnClickLeft()
     {
-        if (a == 0)
-            a = 15;
-        a--;
-        tiles[a].GetComponent<Renderer>().material.color = Color.blue;
-        Debug.Log(a);
+        if (TileIndex == 0)
+            TileIndex = 15;
+        TileIndex--;
+        tileColorChange();
+        tiles[TileIndex].GetComponent<Renderer>().material.color = Color.gray;
     }
 
     public void OnClickRight()
     {
-        if (a == 15)
-            a = -1;
-        a++;
-        tiles[a].GetComponent<Renderer>().material.color = Color.red;
-        Debug.Log(a);
+        if (TileIndex == 15)
+            TileIndex = -1;
+        TileIndex++;
+        tileColorChange();
+        tiles[TileIndex].GetComponent<Renderer>().material.color = Color.gray;
     }
 
     public void OnClickUp()
     {
-        if (a < 4)
-            a += 16;
-        a -= 4;
-        tiles[a].GetComponent<Renderer>().material.color = Color.blue;
-        Debug.Log(a);
+        if (TileIndex < 4)
+            TileIndex += 16;
+        TileIndex -= 4;
+        tileColorChange();
+        tiles[TileIndex].GetComponent<Renderer>().material.color = Color.gray;
     }
 
     public void OnClickDown()
     {
-        if (a > 11)
-            a -= 16;
-        a += 4;
-        tiles[a].GetComponent<Renderer>().material.color = Color.gray;
-        Debug.Log(a);
+        if (TileIndex > 11)
+            TileIndex -= 16;
+        TileIndex += 4;
+        tileColorChange();
+        tiles[TileIndex].GetComponent<Renderer>().material.color = Color.gray;
     }
         
     public void OnClickEnter()
     {
-        if (hasTurret[a] == false) 
-            TurretManager.Instance.GenerateTurretByIndex(a, type);
-        hasTurret[a] = true;
+        tileColorChange();
+        if (hasTurret[TileIndex] == false) 
+            TurretManager.Instance.GenerateTurretByIndex(TileIndex, type);
+        hasTurret[TileIndex] = true;
         transform.parent.parent.GetComponent<UIPanel>().alpha = 0;
         transform.root.FindChild("TurretPanel").GetComponent<UIPanel>().alpha = 1;
+    }
+
+    void tileColorChange()
+    {
+        for (int i = 0; i < 16; i++)
+        {
+            tiles[i].GetComponent<Renderer>().material.color = Color.white;
+        }
     }
 }

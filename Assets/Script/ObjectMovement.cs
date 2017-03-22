@@ -14,6 +14,7 @@ public abstract class ObjectMovement : MonoBehaviour {
     public float frequency = 20.0f;
     protected Vector3 pos;
 
+    public Transform Enemy { get; set; }
     IEnumerator InActiveObjectDelay(float delay, GameObject obj)
     {
         yield return new WaitForSeconds(delay);
@@ -45,6 +46,17 @@ public abstract class ObjectMovement : MonoBehaviour {
     public abstract void OnUpdateMovement();
 	
 	void Update () {
+        this.transform.LookAt(Enemy);
         OnUpdateMovement();
 	}
+
+    void OnCollisionEnter(Collision col)
+    {
+        //col.contacts[0].point;
+        if (col.collider.CompareTag("Enemy"))
+        {
+            Bullet.SetActive(false);
+            Muzzle.SetActive(false);
+        }
+    }
 }

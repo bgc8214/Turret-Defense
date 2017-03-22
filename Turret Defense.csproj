@@ -227,8 +227,8 @@
     <Compile Include="Assets\Script\MoveTurret.cs" />
     <Compile Include="Assets\Script\ObjectMovement.cs" />
     <Compile Include="Assets\Script\ObjectPooling.cs" />
+    <Compile Include="Assets\Script\RayCast.cs" />
     <Compile Include="Assets\Script\ResourceManager.cs" />
-    <Compile Include="Assets\Script\TileMap.cs" />
     <Compile Include="Assets\Script\TurretManager.cs" />
   </ItemGroup>
   <ItemGroup>
